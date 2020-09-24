@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+
+	<form>
+		<span id="abc" style="">Search Medicine</span>
+		<span style="padding-left: 5px;"><input type="text" id="term" name="term" onkeyup="abc()"> <br/></span>
+	</form>
+
+	<br>
+	<div id="result">
+		
+	</div>
+
+	<script type="text/javascript">
+		
+		function abc()
+		{
+			var search = document.getElementById("term").value;
+			var xhttp = new XMLHttpRequest();	
+			
+			xhttp.onreadystatechange = function() 
+			{
+			    if (this.readyState == 4 && this.status == 200)
+			    {
+			    	document.getElementById('result').innerHTML = this.responseText;
+			    }
+			};
+			
+			xhttp.open("GET", "Medicine_Search.php?key="+search, true);
+			xhttp.send(); 
+		}
+	</script>
+</body>
+</html>
